@@ -1,22 +1,38 @@
 #include <iostream>
 
 class bst{
+
   class node{
-
+    int value;
+    node *left;
+    node *right;
+    node(int value){
+      left = nullptr;
+      right = nullptr;
+      value = value;
+    }
   };
 
-  node *root = nullptr;
+ node *traverse(node *n){
 
-  node &traverse(node &n){
 
-  };
+  }
+  node *root;
 
 public:
   bst(){
-
+    root = nullptr;
+  
+ 
   }
+  
   void insert(int value){
-
+    // create the node to be inserted
+    // then find where to insert it
+    node *nn = new node(value);
+    if (nullptr == root){
+      root = nn;
+    }
   }
   void lookup(int value){
 
@@ -31,7 +47,7 @@ public:
 int main() {
   printf("Hallow Russ! I love you!\n");
   printf("Binary Search Tree unit test\n");
-  class bst tree;
+  bst tree;
 //                  9
 //          4               20
 //      1       6     15          170
