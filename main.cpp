@@ -3,13 +3,14 @@
 class bst{
 
   class node{
-    int value;
-    node *left;
-    node *right;
+    int _value;
+    node *_left;
+    node *_right;
+  public:
     node(int value){
-      left = nullptr;
-      right = nullptr;
-      value = value;
+      _left = nullptr;
+      _right = nullptr;
+      _value = value;
     }
   };
 
@@ -17,11 +18,11 @@ class bst{
 
 
   }
-  node *root;
-
+  node *_root;
 public:
+
   bst(){
-    root = nullptr;
+    _root = nullptr;
   
  
   }
@@ -30,8 +31,8 @@ public:
     // create the node to be inserted
     // then find where to insert it
     node *nn = new node(value);
-    if (nullptr == root){
-      root = nn;
+    if (nullptr == _root){
+      _root = nn;
     }
   }
   void lookup(int value){
