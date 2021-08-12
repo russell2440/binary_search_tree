@@ -3,10 +3,10 @@
 class bst{
 
   class node{
+  public:
     int _value;
     node *_left;
     node *_right;
-  public:
     node(int value){
       _left = nullptr;
       _right = nullptr;
@@ -23,8 +23,6 @@ public:
 
   bst(){
     _root = nullptr;
-  
- 
   }
   
   void insert(int value){
@@ -33,6 +31,25 @@ public:
     node *nn = new node(value);
     if (nullptr == _root){
       _root = nn;
+    } else {
+      node *cn = _root;
+      while(true){
+        if (value < cn->_value){ //right
+          if(nullptr == cn->_left){
+            cn->_left = nn;
+            break;
+          }
+          cn = cn->_left;
+        } else { // right
+          if(value > cn->_value){
+            if(nullptr == cn->_right){
+              cn->_right = nn;
+              break;
+            }
+            cn = cn->_right;
+          }
+        }
+      }
     }
   }
   void lookup(int value){
