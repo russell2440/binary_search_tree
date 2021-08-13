@@ -14,16 +14,33 @@ class bst{
     }
   };
 
-  node *preorder_traverse(node *n){
-
-    return 0;
-  }
+// inorder_traverse
+// Until all nodes are traversed −
+// Step 1 − Recursively traverse left subtree.
+// Step 2 − Visit root node.
+// Step 3 − Recursively traverse right subtree.
   node *inorder_traverse(node *n){
 
     return 0;
 
   }
+  
+  /* preorder_traverse
+  Until all nodes are traversed −
+  Step 1 − Visit root node.
+  Step 2 − Recursively traverse left subtree.
+  Step 3 − Recursively traverse right subtree.
+  */
+  node *preorder_traverse(node *n){
 
+    return 0;
+  }
+  /* postorder_traverse
+  Until all nodes are traversed −
+  Step 1 − Recursively traverse left subtree.
+  Step 2 − Recursively traverse right subtree.
+  Step 3 − Visit root node.
+  */
   node *postorder_traverse(node *n){
 
     return 0;
