@@ -14,10 +14,22 @@ class bst{
     }
   };
 
- node *traverse(node *n){
+  node *preorder_traverse(node *n){
 
+    return 0;
+  }
+  node *inorder_traverse(node *n){
+
+    return 0;
 
   }
+
+  node *postorder_traverse(node *n){
+
+    return 0;
+
+  }
+
   node *_root;
 public:
 
