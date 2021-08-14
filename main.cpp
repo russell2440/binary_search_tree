@@ -124,8 +124,25 @@ public:
     }
     */
   }
-  void lookup(int value){
-
+  bool lookup(int value){
+    if(!_root){
+      return false;
+    } else {
+      node *cn = _root;
+      while(cn){
+        if(value<cn->_value)
+        {
+          cn = cn->_left;
+        } else {
+          if(value == cn->_value) {
+            return true;
+          } else {
+            cn = cn->_right;
+          }
+        }
+      }
+      return false;
+    }
   }
   void display(){
     inorder_traverse(_root);printf("\n");
@@ -152,6 +169,15 @@ int main() {
   tree.insert(1);
 
   tree.display();
+  int value = 20;
+  printf("Is %d in tree? %d\n",value, tree.lookup(value));
+  value = 25;
+  printf("Is %d in tree? %d\n",value, tree.lookup(value));
+  value = 254;
+  printf("Is %d in tree? %d\n",value, tree.lookup(value));
+  value = 6;
+  printf("Is %d in tree? %d\n",value, tree.lookup(value));
+
 
   return 0;
 }
