@@ -14,15 +14,23 @@ class bst{
     }
   };
 
-// inorder_traverse
-// Until all nodes are traversed −
-// Step 1 − Recursively traverse left subtree.
-// Step 2 − Visit root node.
-// Step 3 − Recursively traverse right subtree.
-  node *inorder_traverse(node *n){
+  node *_root;
 
-    return 0;
 
+  /* inorder_traverse
+  Until all nodes are traversed −
+  Step 1 − Recursively traverse left subtree.
+  Step 2 − Visit root node.
+  Step 3 − Recursively traverse right subtree.
+  */
+  void inorder_traverse(node *n){
+    if (nullptr != n->_left){
+      inorder_traverse(n->_left);
+    }
+    printf("%d,",n->_value);
+    if (nullptr != n->_right){
+      inorder_traverse(n->_right);
+    }
   }
   
   /* preorder_traverse
@@ -31,25 +39,33 @@ class bst{
   Step 2 − Recursively traverse left subtree.
   Step 3 − Recursively traverse right subtree.
   */
-  node *preorder_traverse(node *n){
-
-    return 0;
+  void preorder_traverse(node *n){
+    printf("%d,",n->_value);
+    if (nullptr != n->_left){
+      preorder_traverse(n->_left);
+    }
+    if (nullptr != n->_right){
+      preorder_traverse(n->_right);
+    }
   }
+
   /* postorder_traverse
   Until all nodes are traversed −
   Step 1 − Recursively traverse left subtree.
   Step 2 − Recursively traverse right subtree.
   Step 3 − Visit root node.
   */
-  node *postorder_traverse(node *n){
-
-    return 0;
-
+  void postorder_traverse(node *n){
+    if (nullptr != n->_left){
+      postorder_traverse(n->_left);
+    }
+    if (nullptr != n->_right){
+      postorder_traverse(n->_right);
+    }
+    printf("%d,",n->_value);
   }
 
-  node *_root;
 public:
-
   bst(){
     _root = nullptr;
   }
@@ -70,7 +86,7 @@ public:
           }
           cn = cn->_left;
         } else { // right
-          if(value > cn->_value){
+          {
             if(nullptr == cn->_right){
               cn->_right = nn;
               break;
@@ -85,15 +101,16 @@ public:
 
   }
   void display(){
-
+    inorder_traverse(_root);printf("\n");
+    preorder_traverse(_root);printf("\n");
+    postorder_traverse(_root);printf("\n");
   }
 };
 
 
 
 int main() {
-  printf("Hallow Russ! I love you!\n");
-  printf("Binary Search Tree unit test\n");
+  printf("Binary Search Tree unit test, and I LOVE you!\n");
   bst tree;
 //                  9
 //          4               20
