@@ -125,24 +125,17 @@ public:
     */
   }
   bool lookup(int value){
-    if(!_root){
-      return false;
-    } else {
       node *cn = _root;
       while(cn){
-        if(value<cn->_value)
-        {
+        if(value<cn->_value){
           cn = cn->_left;
-        } else {
-          if(value == cn->_value) {
-            return true;
-          } else {
+        } else if(value>cn->_value) {
             cn = cn->_right;
-          }
+        } else if(value==cn->_value) {
+          return true;
         }
       }
       return false;
-    }
   }
   void display(){
     inorder_traverse(_root);printf("\n");
