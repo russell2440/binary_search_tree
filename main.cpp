@@ -3,6 +3,7 @@
 class bst{
 
   class node{
+    node(){}
   public:
     int _value;
     node *_left;
@@ -16,7 +17,7 @@ class bst{
 
   node *_root;
 
-
+  
   /* inorder_traverse
   Until all nodes are traversed −
   Step 1 − Recursively traverse left subtree.
@@ -65,12 +66,37 @@ class bst{
     printf("%d,",n->_value);
   }
 
+// recursive insert method
+void _insert(node *cn, int value){
+  if (value<cn->_value){
+    if(!cn->_left){
+      node *nn = new node(value);
+      cn->_left = nn;
+      return;
+    }
+    _insert(cn->_left,value);
+  } else {
+    if(!cn->_right){
+      node *nn = new node(value);
+      cn->_right = nn;
+      return;
+    }
+    _insert(cn->_right,value);
+  }
+}
 public:
   bst(){
     _root = nullptr;
   }
-  
   void insert(int value){
+    if (nullptr == _root){
+      node *nn = new node(value);
+      _root = nn;
+    } else {
+      _insert(_root,value);
+    }
+    return;
+    /*
     // create the node to be inserted
     // then find where to insert it
     node *nn = new node(value);
@@ -96,6 +122,7 @@ public:
         }
       }
     }
+    */
   }
   void lookup(int value){
 
@@ -110,7 +137,7 @@ public:
 
 
 int main() {
-  printf("Binary Search Tree unit test, and I LOVE you!\n");
+  printf("Binary Search Tree unit test, and Russell I LOVE you!\n");
   bst tree;
 //                  9
 //          4               20
