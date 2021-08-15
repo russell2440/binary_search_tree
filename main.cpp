@@ -137,6 +137,24 @@ public:
       }
       return false;
   }
+  bool remove(int value){
+    if(!_root){
+      return false;
+    } 
+    node *cn = _root;
+    node *pn = nullptr;
+    while(cn){
+      if(value < cn->_value){
+
+      } else if(value > cn->_value){
+
+      } else if(value == cn->_value){
+        // we have a match, get to work
+        return true;      
+      } 
+    }
+    return false;
+  }
   void display(){
     inorder_traverse(_root);printf("\n");
     preorder_traverse(_root);printf("\n");
