@@ -145,24 +145,21 @@ public:
     node *pn = nullptr;
     while(cn){
       if(value < cn->_value){
-        
+        pn = cn;
+        cn = cn->_left;
       } else if(value > cn->_value){
-
+        pn = cn;
+        cn = cn->_right;
       } else if(value == cn->_value){
         // we have a match, get to work
-        node *dn = cn;  // delete node
 
-        if (!cn->_right) {
         // option 1: no right child
-
-        } else if (!cn->_right->_left) {
+        if (!cn->_right) {
         // option 2: right child which doesn't have a left child
-
-        } else if (cn->_right->_left){
+        } else if (!cn->_right->_left) {
         // option 3: right child which has a left child
-
+        } else {
         }
-
         return true;      
       } 
     }
