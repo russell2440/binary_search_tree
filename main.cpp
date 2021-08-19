@@ -151,10 +151,37 @@ public:
         pn = cn;
         cn = cn->_right;
       } else if(value == cn->_value){
-        // we have a match, get to work
+        // we have a match, get to work.
+        // What node inherit's current nodes children? 
+        // Why it's next greater of course. This greater
+        // node could be it's child or some other nodes 
+        // child.
 
         // option 1: no right child
         if (!cn->_right) {
+          // The current node is the root, and as there's 
+          // no greater, no right child, the left child becomes
+          // the new root.
+          if (!pn) {
+            _root = cn->_left;
+            // delete current node
+            delete cn;
+          } else {
+            // Which way did we desend to 
+            // this current node? We have 
+            // only the parent to ask
+            if (cn->_value < pn->_value){
+              pn->_left = cn->_left;
+              // delete current node
+              delete cn;
+            } else if(cn->_value > pn->_value){
+              pn->_right = cn->_left;
+              // delete current node
+              delete cn;
+            }
+            
+          // Now 
+          }
         // option 2: right child which doesn't have a left child
         } else if (!cn->_right->_left) {
         // option 3: right child which has a left child
