@@ -138,6 +138,16 @@ public:
       return false;
   }
   bool remove(int value){
+    /*
+    The general algorithm:
+    - Search for v
+    - If v is a leaf
+        delete leaf v
+    - Else If v has 1 child
+        bypass v
+    - Else 
+        replace v with successor
+    */ 
     if(!_root){
       return false;
     } 
@@ -152,41 +162,45 @@ public:
         cn = cn->_right;
       } else if(value == cn->_value){
         // we have a match, get to work.
-        // What node inherit's current nodes children? 
-        // Why it's next greater of course. This greater
-        // node could be it's child or some other nodes 
-        // child.
+        
+        // Which node inherit's current nodes children? 
+        // Why it's successor of course. 
 
         // option 1: no right child
         if (!cn->_right) {
           // The current node is the root, and as there's 
           // no greater, no right child, the left child becomes
           // the new root.
-          if (!pn) {
+          if (cn == _root) {
             _root = cn->_left;
-            // delete current node
-            delete cn;
           } else {
             // Which way did we desend to 
             // this current node? We have 
             // only the parent to ask
             if (cn->_value < pn->_value){
               pn->_left = cn->_left;
-              // delete current node
-              delete cn;
             } else if(cn->_value > pn->_value){
               pn->_right = cn->_left;
-              // delete current node
-              delete cn;
             }
-            
-          // Now 
           }
+
         // option 2: right child which doesn't have a left child
         } else if (!cn->_right->_left) {
+          if(cn == _root){
+
+          } else {
+
+          }
+
         // option 3: right child which has a left child
         } else {
+          if(cn == _root){
+
+          } else {
+
+          }
         }
+        delete cn;
         return true;      
       } 
     }
@@ -215,8 +229,8 @@ int main() {
   tree.insert(170);
   tree.insert(15);
   tree.insert(1);
-
   tree.display();
+
   int value = 20;
   printf("Is %d in tree? %d\n",value, tree.lookup(value));
   value = 25;
@@ -225,6 +239,9 @@ int main() {
   printf("Is %d in tree? %d\n",value, tree.lookup(value));
   value = 6;
   printf("Is %d in tree? %d\n",value, tree.lookup(value));
+
+  tree.remove(6);
+  tree.display();
 
 
   return 0;
