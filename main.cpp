@@ -184,12 +184,20 @@ public:
             }
           }
 
-        // option 2: right child which doesn't have a left child
+        // option 2: right child which doesn't have a left child.
+        // Replace current node with right child.
         } else if (!cn->_right->_left) {
+          // Connect current node left child to right child
+          cn->_right->_left = cn->_left;
+          // Connect parent to right child
           if(cn == _root){
-
+            _root = cn->_right;              
           } else {
-
+            if(cn->_value < pn->_value){
+              pn->_left = cn->_right;
+            } else {
+              pn->_right = cn->_right;
+            }
           }
 
         // option 3: right child which has a left child
@@ -200,7 +208,9 @@ public:
 
           }
         }
+        // Finally, delete current node.
         delete cn;
+
         return true;      
       } 
     }
