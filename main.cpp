@@ -202,8 +202,21 @@ public:
 
         // option 3: right child which has a left child
         } else {
+          // find replacement. Find right child's leftmost child.
+          node *rnp = cn->_right;
+          node *rn = rnp->_left;
+          while(rn->_left){
+            rnp = rn;
+            rn = rnp->_left;
+          }
+          // R's parent left child is now R's right child
+          rnp->_left = rn->_right;
+          // Replace
+          rn->_left = cn->_left;
+          rn->_right = cn->_right;
+          
           if(cn == _root){
-
+            _root = rn;
           } else {
 
           }
